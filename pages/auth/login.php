@@ -20,14 +20,16 @@ session_start();
                 <div class="w-75 form-container">
                     <h1 class="text-center mb-4">FarmSync</h1>
                     <h2 class="text-center mb-4">Login</h2>
-                    <form method="POST" action="../../auth/login.php">
+                    <form id="loginForm" method="POST" action="../../auth/login.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control input-group" id="email" placeholder="Enter Email" name="email">
+                            <span id="emailError" class="error-message"></span>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control  input-group" id="password" placeholder="Enter Password" name="password">
+                            <span id="passwordError" class="error-message"></span>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-custom">Login</button>
@@ -40,5 +42,7 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script type="module" src="../../assets/js/validations/loginValidation.js"></script>
 </body>
 </html>

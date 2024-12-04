@@ -11,8 +11,9 @@
         <li class="nav-item"><a href="settings.php" class="nav-link"><i class="fi fi-ts-customize"></i>Settings</a></li>
     </ul>
 
+    
     <div class="logout-btn">
-        <button class="btn btn-custom mt-auto"><i class="bi bi-box-arrow-right"></i>Logout</button>
+        <a href="../../../auth/logout.php"><button class="btn btn-custom mt-auto"><i class="bi bi-box-arrow-right"></i>Logout</button></a>
     </div>
 </div>
 

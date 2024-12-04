@@ -27,3 +27,12 @@ input {
 .form-container p {
     font-size: 0.7rem;
 }
+
+.error-message {
+    color: #d33f2f;
+    font-size: .85rem;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: none;
+}

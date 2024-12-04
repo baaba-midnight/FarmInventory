@@ -20,22 +20,26 @@ session_start();
                 <div class="w-75 form-container">
                     <h1 class="text-center mb-4">FarmSync</h1>
                     <h2 class="text-center mb-4">Register</h2>
-                    <form method="POST" action="../../auth/register.php">
+                    <form id="registrationForm" method="POST" action="../../auth/register.php">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control input-group" id="username" placeholder="Enter Username" name="username">
+                            <span id="usernameError" class="error-message"></span>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control input-group" id="email" placeholder="Enter Email" name="email">
+                            <span id="emailError" class="error-message"></span>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control  input-group" id="password" placeholder="Enter Password" name="password">
+                            <span id="passwordError" class="error-message"></span>
                         </div>
                         <div class="mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control  input-group" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
+                            <span id="confirmPasswordError" class="error-message"></span>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-custom">Register</button>
@@ -48,5 +52,7 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script type="module" src="../../assets/js/validations/registrationValidation.js"></script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('../Fonts/static/Outfit-Regular.ttf') format('trueType');
+    /* font-weight: 400;  Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../Fonts/static/Outfit-Bold.ttf') format('trueType');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+
+* {
+    font-family: 'Outfit';
+    font-weight: 100;
+    box-sizing: border-box;
+}
+
+.btn-custom {
+    background-color: #0A9A05 !important; /* Custom green background */
+    color: white !important; /* White text for visibility */
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    border: none; /* Remove any border */
+    border-radius: 5px; /* Optional for rounded corners */
+    padding: 10px 20px; /* Adjust padding for better appearance */
+}
+
+.btn-custom:hover {
+    background-color: #085B05 !important; /* Darker green on hover */
+}
+
+.prompt-box {
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    z-index: 1000;
+    display: flex;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    animation: slideIn 0.5s forwards, slideOut 0.5s forwards 2.5s;
+}
+
+.prompt-box i {
+    font-size: 18px;
+    color: white;
+}
+
+.error {
+    background-color: #e74c3c;
+}
+
+.success {
+    background-color: #2ecc71;
+}
+
+@keyframes slideIn {
+    from{right:-400px;}
+    to {right: 20px;}
+}
+
+@keyframes slideOut {
+    from {right:20px; opacity: 1;}
+    to {right: -400px; opacity: 0;}
+}

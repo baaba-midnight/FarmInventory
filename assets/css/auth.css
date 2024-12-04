@@ -1,0 +1,29 @@
+h1 {
+    font-weight: 700;
+}
+
+.form-container {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-container a {
+    color: #085B05;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+input {
+    border: 2px solid black;
+}
+
+.input-group input::placeholder {
+    font-family: 'Outfit', sans-serif;
+    font-size: 5px;
+    color: #888;
+}
+
+.form-container p {
+    font-size: 0.7rem;
+}

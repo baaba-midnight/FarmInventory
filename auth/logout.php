@@ -6,6 +6,6 @@ session_destroy();   // Destroy the session
 setcookie(session_name(), '', time() - 3600, '/'); // Clear the session cookie
 
 // redirect to the login page
-header("Location: login.php");
+header("Location: ../pages/auth/login.php");
 exit();
 ?>

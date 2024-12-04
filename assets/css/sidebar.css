@@ -1,0 +1,33 @@
+.sidebar {
+    min-width: 250px;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    gap: 5px;
+}
+
+.active {
+    background-color: #DCFCE7;
+    color: #16654E;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: #16654E;
+    background-color: #DCFCE7;
+}
+
+.logout-btn {
+    display: flex;
+    margin-top: auto;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+}

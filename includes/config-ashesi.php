@@ -1,8 +1,8 @@
 <?php 
-$servername = 'localhost';
-$username = 'root';
-$dbname = 'farm_inventory';
-$password = '';
+$servername = '169.239.251.102';
+$username = 'baaba.amosah';
+$dbname = 'webtech_fall2024_baaba_amosah';
+$password = 'Andriod17@CS';
 
 $conn = new mysqli(
     $servername,

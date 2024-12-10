@@ -1,33 +1,53 @@
+:root {
+    --sidebar-width: 260px;
+    --primary-green: #0A9A05;
+    --active-green: #DCFCE7;
+    --card-border-radius: 10px;
+}
+
+/* Sidebar Styles */
 .sidebar {
-    min-width: 250px;
-    position: relative;
+    width: var(--sidebar-width);
+    background-color: white;
     height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    padding: 20px;
+    border-bottom: 2px solid #eee;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.logo-section img {
+    height: 40px;
 }
 
 .nav-link {
-    color: black;
-    font-weight: bold;
-    display: flex;
-    gap: 5px;
+    color: #666;
+    padding: 15px 20px;
+    transition: all 0.3s;
 }
 
-.active {
-    background-color: #DCFCE7;
-    color: #16654E;
-}
-
-.nav-link:hover {
-    text-decoration: none;
-    color: #16654E;
-    background-color: #DCFCE7;
+.nav-link:hover, .nav-link.active {
+    border-radius: 10px;
+    background-color: var(--active-green);
+    color: #085B05;
 }
 
 .logout-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 30%;
+    transform: translate(-50%);
     display: flex;
     margin-top: auto;
     justify-content: space-between;
     gap: 10px;
     padding: 10px;
+    align-self: center;
 }

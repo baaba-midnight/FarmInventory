@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
 
         if (password_verify($password, $userPassword['password'])) {
+
             $query = "SELECT * FROM farminventory_users WHERE email = ?";
             $stmt = $conn->prepare($query);
             $stmt->bind_param('s', $email);
@@ -47,6 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     $username = $row['username'];
                     $role = $row['role'];
                     $email = $row['email'];
+
+                    // Update the last_login column
+                    $updateQuery = "UPDATE farminventory_users SET last_login = NOW() WHERE id = ?";
+                    $updateStmt = $conn->prepare($updateQuery);
+                    $updateStmt->bind_param("i", $row['id']);
+                    $updateStmt->execute();
+
+                    // insert login data into session_logs
+                    $updateQuery = "INSERT INTO session_logs (user_id, login_time) VALUES (?, NOW());";
+                    $updateStmt = $conn->prepare($updateQuery);
+                    $updateStmt->bind_param('i', $userID);
+                    $updateStmt->execute();
 
                     set_flash_message("Welcome Back " . $username, "success");
 

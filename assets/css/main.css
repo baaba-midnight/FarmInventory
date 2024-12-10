@@ -1,0 +1,39 @@
+:root {
+    --sidebar-width: 260px;
+    --primary-blue: #12137c;
+    --card-border-radius: 10px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+}
+
+.header {
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box {
+    max-width: 300px;
+    width: 100%;
+}
+
+.btn-dark {
+    background-color: var(--primary-blue);
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #0d0e5c;
+}

@@ -1,0 +1,44 @@
+.settings-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    max-width: 900px;
+}
+
+.settings-nav {
+    background: #D9D9D9;
+    padding: 10px 0;
+}
+
+.settings-nav .nav-link {
+    color: #495057;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.settings-content {
+    padding: 20px;
+    position: relative;
+}
+
+.settings-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 123, 255, 0.05);
+    z-index: -1;
+    transition: transform 0.5s ease-in-out;
+}
+
+.settings-content.active-background::before {
+    transform: translateX(-20px);
+}
+
+.form-control {
+    margin-bottom: 20px;
+}

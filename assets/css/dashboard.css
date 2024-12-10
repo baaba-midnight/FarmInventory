@@ -1,0 +1,30 @@
+.stat {
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.icon-large {
+    font-size: 5rem; /* Adjust the size */
+}
+
+.large-navbar {
+    height: 80px; /* Adjust height as needed */
+    font-size: 1.2rem; /* Increase font size for a larger look */
+}
+
+.badge {
+    font-size: 0.9rem; /* Adjust badge size */
+    padding: 0.5em 0.7em; /* Make it a bit larger */
+}

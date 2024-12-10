@@ -50,3 +50,21 @@ CREATE TABLE equipment (
     last_service_date DATE NULL,
     next_Service_due DATE NULL
 );
+
+CREATE TABLE notifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    message TEXT NOT NULL,
+    type ENUM('info', 'warning', 'error') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES farmInventory_users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE farms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    farm_name VARCHAR(100) NOT NULL,
+    location VARCHAR(255),
+    farm_manager_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (farm_manager_id) REFERENCES farmInventory_users(id) ON DELETE SET NULL
+);

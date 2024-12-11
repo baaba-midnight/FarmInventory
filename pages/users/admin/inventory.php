@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
     
+    <script src="../../../assets/js/delete.js"></script>
+    
     <link rel="stylesheet" href="../../../assets/css/style.css">
     <link rel="stylesheet" href="../../../assets/css/sidebar.css">
     <link rel="stylesheet" href="../../../assets/css/header.css">
@@ -31,44 +33,29 @@
 
             <div class="content p-5">
                 <div class="card">
-                    <table class="table custom-table">
+                    <table id="inventoryTable" class="table custom-table">
                         <thead>
                             <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
                                 <th>Farm Name</th>
-                                <th>Location</th>
-                                <th>Primary Crop</th>
-                                <th>Size (Acres)</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Green Valley</td>
-                                <td>New Abrem</td>
-                                <td>Corn</td>
-                                <td>250</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-view">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-remove">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sunny Fields</td>
-                                <td>Old Town</td>
-                                <td>Wheat</td>
-                                <td>180</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-view">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-remove">Delete</a>
-                                </td>
-                            </tr>
+                            <!-- Inserted dynamically with JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
+        <?php include "../../../templates/delete.php"?>
     </div>
 
     <script src="../../../assets/js/notifications.js"></script>
+    <script src="../../../assets/js/functions/admin/inventory.js"></script>
+    <script src="../../../assets/js/reload-functions.js"></script>
 </body>
 </html>

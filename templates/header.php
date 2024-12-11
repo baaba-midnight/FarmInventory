@@ -12,8 +12,26 @@
     </div>
 
     <!-- New Button -->
-    <?php if (!empty($buttonContent)): ?>
-      <button class="btn btn-custom"><?php echo htmlspecialchars($buttonContent); ?></button>
+    <?php if (!empty($buttonContent)): ?> 
+        <?php switch ($buttonContent): 
+            case 'Add New Item': ?>
+                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addPatientModal"> 
+                    <?php echo htmlspecialchars($buttonContent); ?>
+                </button>
+                <?php break; 
+            case 'Add New User': ?>
+                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewUserModal"> 
+                    <?php echo htmlspecialchars($buttonContent); ?>
+                </button>
+                <?php break;
+            case 'Add New Farm': ?>
+              <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewFarmModal"> 
+                  <?php echo htmlspecialchars($buttonContent); ?>
+              </button>
+              <?php break; 
+            default: ?>
+                <?php break; ?>
+        <?php endswitch; ?>
     <?php endif; ?>
 
     <!-- Notification Bell -->

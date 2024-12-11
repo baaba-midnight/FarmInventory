@@ -64,7 +64,15 @@ CREATE TABLE farms (
     id INT AUTO_INCREMENT PRIMARY KEY,
     farm_name VARCHAR(100) NOT NULL,
     location VARCHAR(255),
-    farm_manager_id INT,
+    primary_crop VARCHAR(100), -- Field to store the primary crop
+    size_acres DECIMAL(10, 2), -- Field to store the size of the farm in acres
+    farm_manager_id INT, -- Links to the user managing the farm
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (farm_manager_id) REFERENCES farmInventory_users(id) ON DELETE SET NULL
 );
+
+ALTER TABLE inventory ADD COLUMN user_id INT NOT NULL, ADD FOREIGN KEY (user_id) REFERENCES farmInventory_users(id) ON DELETE CASCADE;
+ALTER TABLE inventory 
+ADD COLUMN farm_id INT NOT NULL, 
+ADD FOREIGN KEY (farm_id) REFERENCES farms(id) ON DELETE CASCADE;
+

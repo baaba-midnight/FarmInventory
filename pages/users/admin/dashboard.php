@@ -81,8 +81,8 @@
     </div>
 
     <!-- JS Scripts -->
-    <script src="../../../assets/js/userActivityChart.js"></script>
-    <script src="../../../assets/js/adminDashboardAnalytics.js"></script>
+    <script src="../../../assets/js/functions/admin/userActivityChart.js"></script>
+    <script src="../../../assets/js/functiions/admin/adminDashboardAnalytics.js"></script>
     <script src="../../../assets/js/notifications.js"></script>
 </body>
 </html>

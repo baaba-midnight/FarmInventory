@@ -52,7 +52,7 @@ function fetchInventory() {
                 <td>${item['farm_name']}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-view">Edit</a>
-                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteFarm(${item['id']})">Delete</a>
+                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventoryItem(${item['id']})">Delete</a>
                 </td>
                 `;
                 tableBody.appendChild(row);

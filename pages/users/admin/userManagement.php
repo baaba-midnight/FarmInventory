@@ -152,5 +152,6 @@
     <script src="../../../assets/js/functions/admin/users.js"></script>
     <script src="../../../assets/js/reload-functions.js"></script>
     <script src="../../../assets/js/functions/admin/updateUser.js"></script>
+    <script src="../../../assets/js/search.js"></script>
 </body>
 </html>

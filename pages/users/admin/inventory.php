@@ -57,5 +57,6 @@
     <script src="../../../assets/js/notifications.js"></script>
     <script src="../../../assets/js/functions/admin/inventory.js"></script>
     <script src="../../../assets/js/reload-functions.js"></script>
+    <script src="../../../assets/js/search.js"></script>
 </body>
 </html>

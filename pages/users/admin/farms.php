@@ -109,6 +109,7 @@
     <script src="../../../assets/js/notifications.js"></script>
     <script src="../../../assets/js/functions/admin/farms.js"></script>
     <script src="../../../assets/js/reload-functions.js"></script>
+    <script src="../../../assets/js/search.js"></script>
 
     <!-- Add Farm Managers to Dropdown -->
     <script>

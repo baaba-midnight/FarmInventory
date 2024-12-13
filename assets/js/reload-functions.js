@@ -12,7 +12,10 @@ function fetchFarms() {
                 <div class="row justify-content-center">
                     <div class="col-md-10 mb-4">
                         <div class="card p-4">
-                            <h3 class="info farm-title">${farm['farm_name']}</h3>
+                            <div class="farm-header">
+                                <h3 class="info farm-title">${farm['farm_name']}</h3>
+                                <a class="btn generate-report">Generate Report</a>
+                            </div>
                             <h6 class="info"><b>Location: </b>${farm['location']}</h6>
                             <h6 class="info"><b>Primary Crop:</b> ${farm['primary_crop']}</h6>
                             <h6 class="info"><b>Size:</b> ${farm['size_acres']} acres</h6>
@@ -53,6 +56,7 @@ function fetchInventory() {
                 <td>
                     <a href="#" class="btn btn-sm btn-view">Edit</a>
                     <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventoryItem(${item['id']})">Delete</a>
+                    <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
                 </td>
                 `;
                 tableBody.appendChild(row);
@@ -83,6 +87,7 @@ function fetchUsers() {
                 <td>
                     <a href="#" class="btn btn-sm btn-view" onclick="editUser(${item['id']})">Edit</a>
                     <a href="#" class="btn btn-sm btn-remove" onclick="deleteUser(${item['id']})">Delete</a>
+                    <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
                 </td>
                 `;
                 tableBody.appendChild(row);

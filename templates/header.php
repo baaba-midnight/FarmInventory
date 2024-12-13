@@ -3,6 +3,9 @@
 
 	<div class="ms-auto d-flex align-items-center gap-3">
 		<?php switch ($headerTitle):
+			case "Dashboard": ?>
+				<button href="#" class="btn btn-custom" style="color: #0A9A05">Generate Report</button>
+				<?php break;
 			case "Inventory Management": ?>
 				<div class="input-group" style="width: 300px">
 					<input type="text" id="search-input" onkeyup="searchInventory()" class="form-control" placeholder="Search Inventory...">

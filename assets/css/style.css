@@ -70,6 +70,25 @@
     background-color: #2ecc71;
 }
 
+.farm-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.generate-report {
+    background-color: #0A9A05 !important; /* Custom green background */
+    color: white !important; /* White text for visibility */
+    font-family: 'Outfit', sans-serif !important;
+    border: none; /* Remove any border */
+    border-radius: 5px; /* Optional for rounded corners */
+    padding: 10px 20px; /* Adjust padding for better appearance */
+}
+
+.generate-report:hover {
+    background-color: #085B05 !important; /* Darker green on hover */
+}
+
 @keyframes slideIn {
     from{right:-400px;}
     to {right: 20px;}

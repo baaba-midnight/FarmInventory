@@ -29,32 +29,7 @@ function openDeleteModal(onConfirm) {
     };
 }
 
-function deleteInventoryItem(itemId) {
-    openDeleteModal(() => {
-        // Perform the delete operation here
-        console.log('Deleting item with ID:', itemId);
-
-        fetch('../../../functions/deleteInventory.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `id=${itemId}`
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    fetchInventory(); // Refresh inventory list
-                } else {
-                    alert('Failed to delete inventory: ' + data.message);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
-}
-
-function deleteFarm(farmId) {
+function deleteFarm(farmId, userId) {
     openDeleteModal(() => {
         console.log("Deleting farm with ID:", farmId);
 
@@ -69,7 +44,7 @@ function deleteFarm(farmId) {
             .then(data => {
                 if (data.success) {
                     alert(data.message);
-                    fetchFarms(); // Refresh inventory list
+                    fetchFarms(userId); // Refresh inventory list
                 } else {
                     alert('Failed to delete farm: ' + data.message);
                 }
@@ -100,4 +75,54 @@ function deleteUser(userId) {
             })
             .catch(error => console.error('Error:', error));
     })
+}
+
+function deleteEquipment(equipmentId) {
+    openDeleteModal(() => {
+        // Perform the delete operation here
+        console.log("Deleting equipment with ID:", equipmentId);
+
+        fetch('../../../functions/deleteEquipment.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `id=${equipmentId}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    fetchEquipment(); // Refresh inventory list
+                } else {
+                    alert('Failed to delete equipment: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+}
+
+function deleteInventory(equipmentId) {
+    openDeleteModal(() => {
+        // Perform the delete operation here
+        console.log("Deleting equipment with ID:", equipmentId);
+
+        fetch('../../../functions/deleteEquipment.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `id=${equipmentId}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    fetchInventory(); // Refresh inventory list
+                } else {
+                    alert('Failed to delete equipment: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 }

@@ -26,6 +26,7 @@ function generatePDFReport($reportType, $data) {
                     <thead>
                         <tr>
                             <th>User</th>
+                            <th>Role</th>
                             <th>Activity</th>
                             <th>Date</th>
                         </tr>
@@ -34,6 +35,7 @@ function generatePDFReport($reportType, $data) {
         foreach ($data as $row) {
             $html .= "<tr>
                         <td>{$row['user']}</td>
+                        <td>{$row['role']}</td>
                         <td>{$row['activity']}</td>
                         <td>{$row['date']}</td>
                       </tr>";

@@ -2,6 +2,8 @@
 include "../includes/config.php";
 include "../templates/messageBox.php";
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $farmName = $_POST['farmName'];
     $location = $_POST['location'];
@@ -16,10 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $stmt->bind_param('ssssi', $farmName, $location, $primaryCrop, $farmSize, $farmManager);
 
     if ($stmt->execute()) {
-        set_flash_message('Farm Added Successfully', "error");
+        set_flash_message('Farm Added Successfully', "success");
 
         // redirect user back to farmManagement
-        header("Location: ../pages/users/admin/farms.php");
+        if ($_SESSION['role'] === 'admin') {
+            header("Location: ../pages/users/admin/farms.php");
+        } else {
+            header('Location: ../pages/users/farmOwners/farms.php');
+        }
+        
         exit();
     } else {
         set_flash_message("Invalid Data", "error");

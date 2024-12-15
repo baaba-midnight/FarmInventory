@@ -31,9 +31,10 @@ function searchInventory() {
                         <td>${item.category}</td>
                         <td>${item.quantity}</td>
                         <td>${item.farm_name}</td>
+                        <td>${item.approval_status}</td>
                         <td>
                             <!-- Example actions -->
-                            <button class="btn btn-view">Edit</button>
+                            <button class="btn btn-view" onclick="editInventoryItem(${item.id})">Edit</button>
                             <button class="btn btn-remove" onclick="deleteInventoryItem(${item.id})">Delete</button>
                             <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
                         </td>

@@ -36,6 +36,15 @@ function fetchFarms() {
 }
 
 function fetchInventory() {
+    const currentURL = window.location.href;
+    let action;
+
+    if (currentURL.includes('inventory')) {
+        action = "inventory";
+    } else {
+        action = "equipment";
+    }
+
     fetch("../../../functions/fetchInventoryItems.php")
     .then(response => response.json())
     .then(data => {
@@ -53,9 +62,10 @@ function fetchInventory() {
                 <td>${item['category']}</td>
                 <td>${item['quantity']}</td>
                 <td>${item['farm_name']}</td>
+                <td>${item['approval_status']}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-view">Edit</a>
-                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventoryItem(${item['id']})">Delete</a>
+                    <a href="#" class="btn btn-sm btn-view" onclick="editInventoryItem(${item['id']})">Edit</a>
+                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteEquipment(${item['id']}, ${action})">Delete</a>
                     <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
                 </td>
                 `;

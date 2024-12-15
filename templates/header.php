@@ -8,12 +8,29 @@
 				<?php break;
 			case "Inventory Management": ?>
 				<div class="input-group" style="width: 300px">
-					<input type="text" id="search-input" onkeyup="searchInventory()" class="form-control" placeholder="Search Inventory...">
+					<?php if ($role === "farm_manager"): ?>
+						<input type="text" id="search-input" onkeyup="searchInventory(<?php echo $userId ?>)" class="form-control" placeholder="Search Inventory...">
+					<?php else: ?>
+						<input type="text" id="search-input" onkeyup="searchInventory()" class="form-control" placeholder="Search Inventory...">
+					<?php endif; ?>
+				</div>
+				<?php break;
+			case "Equipment Management": ?>
+				<div class="input-group" style="width: 300px">
+					<?php if ($role === "farm_manager"): ?>
+						<input type="text" id="search-input" onkeyup="searchEquipment(<?php echo $userId ?>)" class="form-control" placeholder="Search Equipment...">
+					<?php else: ?>
+						<input type="text" id="search-input" onkeyup="searchEquipment()" class="form-control" placeholder="Search Equipment...">
+					<?php endif; ?>
 				</div>
 				<?php break;
 			case "Farm Management": ?>
 				<div class="input-group" style="width: 300px">
-					<input type="text" id="search-input" onkeyup="searchFarms()" class="form-control" placeholder="Search Farms...">
+					<?php if ($role === "farm_manager"): ?>
+						<input type="text" id="search-input" onkeyup="searchFarms(<?php echo $userId ?>)" class="form-control" placeholder="Search Farms...">
+					<?php else: ?>
+						<input type="text" id="search-input" onkeyup="searchFarms()" class="form-control" placeholder="Search Farms...">
+					<?php endif; ?>
 				</div>
 				<?php break;
 			case "User Management": ?>
@@ -29,7 +46,7 @@
 		<?php if (!empty($buttonContent)): ?>
 			<?php switch ($buttonContent):
 				case 'Add New Item': ?>
-					<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+					<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addItemModal">
 						<?php echo htmlspecialchars($buttonContent); ?>
 					</button>
 				<?php break;

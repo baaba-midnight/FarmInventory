@@ -14,9 +14,10 @@ fetch("../../../functions/fetchInventoryItems.php")
                 <td>${item['category']}</td>
                 <td>${item['quantity']}</td>
                 <td>${item['farm_name']}</td>
+                <td>${item['approval_status']}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-view">Edit</a>
-                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventoryItem(${item['id']})">Delete</a>
+                    <a href="#" class="btn btn-sm btn-view" onclick="editInventoryItem(${item['id']})">Edit</a>
+                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteEquipment(${item['equipment_id']})">Delete</a>
                     <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
                 </td>
                 `;

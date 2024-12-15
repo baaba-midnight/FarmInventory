@@ -11,9 +11,25 @@ $query = "SELECT
             f.size_acres,
             u.username AS farm_manager
         FROM farms f
-        LEFT JOIN farmInventory_users u ON f.farm_manager_id = u.id;";
+        LEFT JOIN farmInventory_users u ON f.farm_manager_id = u.id";
 
-$result = $conn->query($query);
+if (isset($_GET['id'])) {
+    // Append WHERE clause to query
+    $query .= " WHERE f.farm_manager_id = ?";
+
+    $userID = (int) $_GET['id'];
+    $stmt = $conn->prepare($query);
+
+    // Bind parameters and execute
+    $stmt->bind_param('i', $userID);
+    $stmt->execute();
+    
+    // Get result of the query
+    $result = $stmt->get_result();
+} else {
+    // No ID provided, just execute the query
+    $result = $conn->query($query);
+}
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -21,9 +37,9 @@ if ($result->num_rows > 0) {
     }
     $response['success'] = true;
 } else {
-    $response['message'] = 'No inventory item found';
+    $response['message'] = 'No farms found';
 }
 
-echo json_encode($response);
+echo json_encode($response); // Return response as JSON
 
 ?>

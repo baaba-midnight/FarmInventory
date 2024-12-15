@@ -1,22 +1,16 @@
 <?php 
-include "../includes/config.php";
+include "../../includes/config.php";
 
 $response = ['success' => false, 'data' => []];
 
 $query = "SELECT 
-        i.id,
-        i.equipment_id,
-        i.item_name, 
-        i.category, 
-        i.quantity,
-        i.approval_status, 
-        f.farm_name
-    FROM 
-        inventory i
-    JOIN 
-        equipment e ON i.equipment_id = e.id
-    JOIN 
-        farms f ON e.farm_id = f.id;";
+        e.id,
+        e.equipment_name, 
+        e.category, 
+        e.status,
+        f.farm_name 
+    FROM equipment e
+    JOIN farms f ON e.farm_id = f.id;";
 
 $result = $conn->query($query);
 

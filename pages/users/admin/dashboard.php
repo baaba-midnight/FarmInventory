@@ -82,7 +82,7 @@
 
     <!-- JS Scripts -->
     <script src="../../../assets/js/functions/admin/userActivityChart.js"></script>
-    <script src="../../../assets/js/functIGRAMions/admin/adminDashboardAnalytics.js"></script>
+    <script src="../../../assets/js/functions/admin/adminDashboardAnalytics.js"></script>
     <script src="../../../assets/js/notifications.js"></script>
 </body>
 </html>

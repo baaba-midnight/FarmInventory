@@ -10,10 +10,7 @@ function farms(userID) {
                     <div class="row justify-content-center">
                         <div class="col-md-10 mb-4">
                             <div class="card p-4">
-                                <div class="farm-header">
-                                    <h3 class="info farm-title">${farm['farm_name']}</h3>
-                                    <a class="btn generate-report">Generate Report</a>
-                                </div>
+                                <h3 class="info farm-title">${farm['farm_name']}</h3>
                                 <h6 class="info"><b>Location: </b>${farm['location']}</h6>
                                 <h6 class="info"><b>Primary Crop:</b> ${farm['primary_crop']}</h6>
                                 <h6 class="info"><b>Size:</b> ${farm['size_acres']} acres</h6>

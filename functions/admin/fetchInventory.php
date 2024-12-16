@@ -1,21 +1,14 @@
-<?php 
-session_start();
-
+<?php
 include "../../includes/config.php";
 
 $response = ['success' => false, 'data' => []];
 
-$userID = $_SESSION['id'];
 $query = "SELECT inventory.*, farms.farm_name AS farm_name 
         FROM inventory 
         JOIN farms ON inventory.farm_id = farms.id
-        WHERE farms.farm_manager_id = ?
         ORDER BY approval_status;";
 
-$stmt = $conn->prepare($query);
-$stmt->bind_param('i', $userID);
-$stmt->execute();
-$result = $stmt->get_result();
+$result = $conn->query($query);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {

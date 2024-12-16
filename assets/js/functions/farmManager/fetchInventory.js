@@ -10,14 +10,14 @@ fetch("../../../functions/farmManager/fetchManagerInventory.php")
                 row.setAttribute('data-id', equipment['id']);
 
                 row.innerHTML = `
-                <td>${equipment['equipment_name']}</td>
+                <td>${equipment['name']}</td>
                 <td>${equipment['category']}</td>
                 <td>${equipment['quantity']}</td>
                 <td>${equipment['farm_name']}</td>
+                <td>${equipment['approval_status']}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-view" onclick="editInventoryItem(${equipment['equipment_id']})">Edit</a>
-                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventory(${equipment['equipment_id']})">Delete</a>
-                    <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
+                    <a href="#" class="btn btn-sm btn-view" onclick="editInventory(${equipment['id']})">Edit</a>
+                    <a href="#" class="btn btn-sm btn-remove" onclick="deleteInventory(${equipment['id']})">Delete</a>
                 </td>
                 `;
                 tableBody.appendChild(row);

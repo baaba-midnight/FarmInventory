@@ -103,7 +103,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../../assets/js/notifications.js"></script>
+    
     <script src="../../../assets/js/functions/farmManager/farms.js"></script>
     <script>farms(<?php echo $userId ?>)</script>
     <script src="../../../assets/js/functions/farmManager/reload-functions.js"></script>

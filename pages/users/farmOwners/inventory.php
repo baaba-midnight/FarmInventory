@@ -1,4 +1,5 @@
 <?php include "./farmManagersSession.php" ?>
+<?php include "../../../templates/messageBox.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="../../../assets/css/tables.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <div class="d-flex">
         <?php 
         include "../../../templates/userSidebar.php";
@@ -42,6 +44,7 @@
                                 <th>Category</th>
                                 <th>Quantity</th>
                                 <th>Farm Name</th>
+                                <th>Approval Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -80,7 +83,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="add_quantity" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity" placeholder="Enter item quantity" name="quantity" required>
+                                <input type="number" class="form-control" id="add_quantity" placeholder="Enter item quantity" name="quantity" required>
                                 <span id="quantityError" class="error-message"></span>
                             </div>
                             <div class="mb-3">
@@ -94,7 +97,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="cancelItemButton" class="btn btn-cancel btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" form="addItemForm" class="btn btn-custom" data-bs-dismiss="modal">Save</button>
+                        <button type="submit" form="addItemForm" class="btn btn-custom">Save</button>
                     </div>
                 </div>
             </div>
@@ -153,13 +156,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../../assets/js/notifications.js"></script>
+    
     <script src="../../../assets/js/functions/farmManager/fetchInventory.js"></script>
     <script src="../../../assets/js/functions/farmManager/reload-functions.js"></script>
     <script src="../../../assets/js/functions/farmManager/updateInventoryItem.js"></script>
+    <sctipt src="../../../assets/js/functions/farmManager/addInventoryItem.js"></script>
     <script src="../../../assets/js/functions/farmManager/userSearch.js"></script>
-    <script src="../../../assets/js/functions/farmManager/addNewItem.js"></script>
-    <script src="../../../assets/js/delete.js"></script>
 
     <script>
         // Fetch farm names using AJAX
@@ -187,12 +189,36 @@
                         $editDropdown.append(option);
                     });
                 } else {
-                    console.log(data);
                     alert('No farms found');
                 }
             },
             error: function(xhr, status, error) {
-                console.log(data);
+                console.error('AJAX Error:', status, error);
+                alert('Error fetching farms');
+            }
+        });
+
+        $.ajax({
+            url: '../../../functions/farmManager/getInventoryCategories.php', // PHP file to fetch farms
+            method: 'GET',
+            data: { id: userId }, // Pass the id parameter
+            dataType: 'json',
+            success: function(data) {
+                // Check if the response is an array and has farms
+                if (Array.isArray(data.data) && data.data.length > 0) {
+                    var $dropdown = $('#edit_category');
+
+                    data.data.forEach(function(category) {
+                        var option = $('<option></option>').val(category).text(category);
+                        $dropdown.append(option);
+                    });
+
+                    // console.log($dropdown)
+                } else {
+                    alert('No farms found');
+                }
+            },
+            error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error);
                 alert('Error fetching farms');
             }

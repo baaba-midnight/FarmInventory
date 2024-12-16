@@ -3,9 +3,6 @@
 
 	<div class="ms-auto d-flex align-items-center gap-3">
 		<?php switch ($headerTitle):
-			case "Dashboard": ?>
-				<button href="#" class="btn btn-custom" style="color: #0A9A05">Generate Report</button>
-				<?php break;
 			case "Inventory Management": ?>
 				<div class="input-group" style="width: 300px">
 					<?php if ($role === "farm_manager"): ?>
@@ -43,31 +40,33 @@
 		<?php endswitch; ?>
 
 		<!-- New Button -->
-		<?php if (!empty($buttonContent)): ?>
-			<?php switch ($buttonContent):
-				case 'Add New Item': ?>
-					<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addItemModal">
-						<?php echo htmlspecialchars($buttonContent); ?>
-					</button>
-				<?php break;
-				case 'Add New User': ?>
-					<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewUserModal">
-						<?php echo htmlspecialchars($buttonContent); ?>
-					</button>
-				<?php break;
-				case 'Add New Farm': ?>
-					<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewFarmModal">
-						<?php echo htmlspecialchars($buttonContent); ?>
-					</button>
-				<?php break;
-				default: ?>
-					<?php break; ?>
-			<?php endswitch; ?>
+		<?php if ($role === 'farm_manager'): ?>
+			<?php if (!empty($buttonContent)): ?>
+				<?php switch ($buttonContent):
+					case 'Add New Item': ?>
+						<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addItemModal">
+							<?php echo htmlspecialchars($buttonContent); ?>
+						</button>
+					<?php break;
+					case 'Add New Equipment': ?>
+						<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addItemModal">
+							<?php echo htmlspecialchars($buttonContent); ?>
+						</button>
+					<?php break;
+					case 'Add New User': ?>
+						<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewUserModal">
+							<?php echo htmlspecialchars($buttonContent); ?>
+						</button>
+					<?php break;
+					case 'Add New Farm': ?>
+						<button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#addNewFarmModal">
+							<?php echo htmlspecialchars($buttonContent); ?>
+						</button>
+					<?php break;
+					default: ?>
+						<?php break; ?>
+				<?php endswitch; ?>
+			<?php endif; ?>
 		<?php endif; ?>
-
-		<!-- Notification Bell -->
-		<button id="badge-notification" class="btn" style="color: #0A9A05; font-size: 1.5rem">
-			<i id="notificationIndicator" class="fi fi-ss-bell"></i>
-		</button>
 	</div>
 </div>

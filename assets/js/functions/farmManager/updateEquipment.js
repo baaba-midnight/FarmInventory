@@ -3,23 +3,23 @@ async function openEditModal(itemID) {
     const id = document.getElementById('edit-id');
     const name = document.getElementById('edit-item_name');
     const category = document.getElementById('edit_category');
-    const status = document.getElementById('edit-status');
+    const condition = document.getElementById('edit-status');
     const farmName = document.getElementById('edit_farmName');
 
     // Reset the form values
     id.value = '';
     name.value = '';
     category.value = '';
-    status.value = '';
+    condition.value = '';
     farmName.value = '';
 
     try {
         // Fetch user data
         const data = await fetchItem(itemID);
         id.value = itemID;
-        name.value = data.equipment_name;
+        name.value = data.name;
         category.value = data.category;
-        status.value = data.status;
+        condition.value = data.condition;
         farmName.value = data.farm_id;
 
         // Show the modal using Bootstrap's modal methods
@@ -31,7 +31,7 @@ async function openEditModal(itemID) {
             const itemID = document.getElementById('edit-id').value;
             const name = document.getElementById('edit-item_name').value;
             const category = document.getElementById('edit_category').value;
-            const status = document.getElementById('edit-status').value;
+            const condition = document.getElementById('edit-status').value;
             const farmName = document.getElementById('edit_farmName').value;
         
             console.log(JSON.stringify({ itemID, name, category, status, farmName }));
@@ -42,7 +42,7 @@ async function openEditModal(itemID) {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ itemID, name, category, status, farmName }),
+                    body: JSON.stringify({ itemID, name, category, condition, farmName }),
                 });
         
                 const result = await response.json();

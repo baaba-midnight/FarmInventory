@@ -21,15 +21,12 @@
 <script>
     // Get the current page url
     const currentPage = window.location.pathname.split("/").pop();
-    console.log(currentPage);
 
     // Get all sidebar links
     const sidebarLinks = document.querySelectorAll(".nav-item a");
-    console.log(sidebarLinks)
 
     // add the active class to the current page link
     sidebarLinks.forEach(link => {
-        console.log(link.getAttribute('href'))
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
         } else {

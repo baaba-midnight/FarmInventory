@@ -1,3 +1,6 @@
+<?php include "./adminSession.php"; ?>
+<?php include "../../../templates/messageBox.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +20,8 @@
     <link rel="stylesheet" href="../../../assets/css/main.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <?php 
-    $role = 'admin';
     include "../../../templates/sidebar.php";
     ?>
 
@@ -83,6 +86,6 @@
     <!-- JS Scripts -->
     <script src="../../../assets/js/functions/admin/userActivityChart.js"></script>
     <script src="../../../assets/js/functions/admin/adminDashboardAnalytics.js"></script>
-    <script src="../../../assets/js/notifications.js"></script>
+    
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php include "./farmManagersSession.php" ?>
+<?php include '../../../templates/messageBox.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="../../../assets/css/main.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <?php 
     include "../../../templates/userSidebar.php";
     ?>
@@ -111,6 +113,5 @@
     <!-- JS Scripts -->
     <script src="../../../assets/js/functions/farmManager/fetchDashboard.js"></script>
     <script> fetchManagerStats(<?php echo $userId ?>); </script>
-    <script src="../../../assets/js/notifications.js"></script>
 </body>
 </html>

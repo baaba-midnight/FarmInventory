@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $itemId = (int) $_GET['id'];
 
     // Query to fetch item$item details
-    $query = "SELECT `equipment_name`, `category`, `status`, `farm_id` FROM `equipment` WHERE `id` = ?";
+    $query = "SELECT `name`, `category`, `condition`, `farm_id` FROM `equipment` WHERE `id` = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $itemId);
 

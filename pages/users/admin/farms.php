@@ -1,3 +1,6 @@
+<?php include "./adminSession.php" ?>
+<?php include "../../../templates/messageBox.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +22,9 @@
     <link rel="stylesheet" href="../../../assets/css/tables.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <div class="d-flex">
-        <?php 
-        $role = 'admin';
-        include "../../../templates/sidebar.php";
-        ?>
+        <?php include "../../../templates/sidebar.php"; ?>
 
         <!-- Main Content -->
         <div class="main-content flex-grow-1">
@@ -106,10 +107,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../../assets/js/notifications.js"></script>
+    
     <script src="../../../assets/js/functions/admin/farms.js"></script>
-    <script src="../../../assets/js/reload-functions.js"></script>
-    <script src="../../../assets/js/search.js"></script>
+    <script src="../../../assets/js/functions/admin/reload-functions.js"></script>
+    <script src="../../../assets/js/functions/admin/search.js"></script>
 
     <!-- Add Farm Managers to Dropdown -->
     <script>

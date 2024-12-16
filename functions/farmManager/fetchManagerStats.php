@@ -1,6 +1,8 @@
 <?php
 include "../../includes/config.php";
+
 function getFarmManagerStats($farm_id, $conn) {
+    $farm_id = (int) $farm_id;
     // Initialize the statistics array
     $stats = [
         'total_inventory_items' => 0,
@@ -14,8 +16,7 @@ function getFarmManagerStats($farm_id, $conn) {
     // Query for total inventory items
     $query = "SELECT COUNT(*) AS total 
         FROM inventory i
-        JOIN equipment e ON i.equipment_id = e.id
-        JOIN farms f ON f.id = e.farm_id
+        JOIN farms f ON f.id = i.farm_id
         WHERE f.farm_manager_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $farm_id);
@@ -27,8 +28,7 @@ function getFarmManagerStats($farm_id, $conn) {
     // Query for low stock items (e.g., quantity < 10)
     $query = "SELECT COUNT(*) AS total
             FROM inventory i
-            JOIN equipment e ON i.equipment_id = e.id
-            JOIN farms f ON f.id = e.farm_id
+            JOIN farms f ON f.id = i.farm_id
             WHERE f.farm_manager_id = ? AND i.quantity < 10;";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $farm_id);
@@ -53,7 +53,7 @@ function getFarmManagerStats($farm_id, $conn) {
     $query = "SELECT COUNT(*) AS total
                 FROM equipment e
                 JOIN farms f ON f.id = e.farm_id
-                WHERE f.farm_manager_id = ? AND status = 'Functional';";
+                WHERE f.farm_manager_id = ? AND e.condition = 'Functional';";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $farm_id);
     $stmt->execute();
@@ -65,7 +65,7 @@ function getFarmManagerStats($farm_id, $conn) {
     $query = "SELECT COUNT(*) AS total
             FROM equipment e
             JOIN farms f ON f.id = e.farm_id
-            WHERE f.farm_manager_id = ? AND status IN ('Needs Repair', 'Broken');";
+            WHERE f.farm_manager_id = ? AND e.condition IN ('Needs Repair', 'Broken');";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $farm_id);
     $stmt->execute();
@@ -77,7 +77,7 @@ function getFarmManagerStats($farm_id, $conn) {
     $query = "SELECT COUNT(*) AS total
             FROM equipment e
             JOIN farms f ON f.id = e.farm_id
-            WHERE f.farm_manager_id = ? AND approval_status = 'Pending';";
+            WHERE f.farm_manager_id = ? AND e.approval_status = 'Pending';";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $farm_id);
     $stmt->execute();

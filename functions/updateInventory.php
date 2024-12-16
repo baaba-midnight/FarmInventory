@@ -11,20 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $farmName = (int) $input['farmName'];
     $quantity = (int) $input['quantity'];
 
-    $query = "UPDATE `equipment` SET `equipment_name`= ?,`category`= ?, `farm_id` = ? WHERE `id` = ?";
+    $query = "UPDATE `inventory` SET `name`=?,`category`=?, `quantity`=?, `farm_id`=? WHERE `id` = ?;";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('ssii', $name, $category, $farmName, $id);
-
-    $query = "UPDATE `inventory` SET `item_name`=?,`category`=?, `quantity`=? WHERE `equipment_id` = ?;";
-    $stmt1 = $conn->prepare($query);
-    $stmt1->bind_param('ssii', $name, $category, $quantity, $id);
+    $stmt->bind_param('ssiii', $name, $category, $quantity, $farmName, $id);
     
 
     if ($stmt->execute()) {
-        if ($stmt1->execute()) {
-            $response['message'] = "Updated Successfully";
-            $response['success'] = true;
-        }
+        $response['message'] = "Updated Successfully";
+        $response['success'] = true;
     } else {
         $response['message'] = "Failed to execute query";
     }

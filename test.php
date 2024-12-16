@@ -3,120 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarmSync - Settings</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-
-    <style>
-        .sidebar {
-    height: 100vh;
-    position: fixed;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-link.active {
-        background-color: #d4f4dd;
-        font-weight: bold;
-    }
-
-    .card-header-tabs .nav-link.active {
-        border-bottom: 2px solid black;
-    }
-
-    </style>
+    <title>Farm Settings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <h4 class="mt-3 text-center">FarmSync</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Inventory</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Farms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">User Management</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Settings</a>
-                        </li>
-                    </ul>
+    <div class="container-fluid min-vh-100 bg-light">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <div class="navbar-nav mx-auto">
+                    <button class="nav-item nav-link btn mx-2 active" data-section="profile">
+                        <i class="bi bi-person me-2"></i>Profile
+                    </button>
+                    <button class="nav-item nav-link btn mx-2" data-section="notifications">
+                        <i class="bi bi-bell me-2"></i>Notifications
+                    </button>
+                    <button class="nav-item nav-link btn mx-2" data-section="data">
+                        <i class="bi bi-database me-2"></i>Data
+                    </button>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h4">Settings</h1>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Personal</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Notifications</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Reporting</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <form id="settingsForm">
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="fullName" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="fullName" value="John Doe">
+        <!-- Content Sections -->
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="card shadow-sm">
+                        <!-- Profile Section -->
+                        <div id="profile-section" class="card-body active-section">
+                            <h3 class="card-title mb-4">Profile Settings</h3>
+                            <form id="profile-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="John Doe">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" value="johndoe@farm.com">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="john.doe@example.com">
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
+                                <div class="mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" value="+233 991 4844">
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="+1 (555) 123-4567">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="password" class="form-label">Change Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">Bio</label>
+                                    <textarea class="form-control" id="bio" name="bio" rows="4">Experienced farm manager passionate about sustainable agriculture</textarea>
                                 </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save me-2"></i>Save Changes
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Notifications Section -->
+                        <div id="notifications-section" class="card-body d-none">
+                            <h3 class="card-title mb-4">Notification Preferences</h3>
+                            <form id="notifications-form">
+                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                    <span>Email Notifications</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="emailAlerts" checked>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                    <span>SMS Alerts</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="smsAlerts">
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                    <span>Push Notifications</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="pushNotifications" checked>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                    <span>Weekly Summary Email</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="weeklyDigest">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">
+                                    <i class="bi bi-save me-2"></i>Save Notification Settings
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Data Section -->
+                        <div id="data-section" class="card-body d-none">
+                            <h3 class="card-title mb-4">Data Management</h3>
+                            <div class="bg-light p-3 rounded mb-3">
+                                <h4 class="mb-2">Export Farm Data</h4>
+                                <p class="text-muted mb-3">Download a complete backup of your farm data</p>
+                                <button id="export-data" class="btn btn-success">
+                                    <i class="bi bi-download me-2"></i>Export Data
+                                </button>
                             </div>
-                            <button type="button" class="btn btn-dark" onclick="saveSettings()">Save Personal Information</button>
-                        </form>
+                            <div class="bg-light p-3 rounded">
+                                <h4 class="mb-2">Data Retention</h4>
+                                <p class="text-muted mb-3">Your data is securely stored and backed up regularly</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-    <script>
-    function saveSettings() {
-        const fullName = document.getElementById('fullName').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const password = document.getElementById('password').value;
-
-        if (!fullName || !email || !phone) {
-            alert("Please fill in all fields");
-            return;
-        }
-
-        alert("Personal information saved successfully!");
-    }
-    </script>
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ async function openEditModal(itemID) {
         const data = await fetchItem(itemID);
         id.value = itemID;
         console.log(data);
-        name.value = data.equipment_name;
+        name.value = data.name;
         category.value = data.category;
         quantity.value = data.quantity;
         farmName.value = data.farm_id;
@@ -67,7 +67,7 @@ async function openEditModal(itemID) {
     }
 }
 
-function editInventoryItem(itemID) {
+function editInventory(itemID) {
     openEditModal(itemID);
 }
 

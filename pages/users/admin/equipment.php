@@ -1,3 +1,6 @@
+<?php include "./adminSession.php" ?>
+<?php include "../../../templates/messageBox.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +20,9 @@
     <link rel="stylesheet" href="../../../assets/css/tables.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <div class="d-flex">
         <?php 
-        $role = 'admin';
         include "../../../templates/sidebar.php";
         ?>
 
@@ -33,12 +36,12 @@
 
             <div class="content p-5">
                 <div class="card">
-                    <table id="inventoryTable" class="table custom-table">
+                    <table id="equipmentTable" class="table custom-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Quantity</th>
+                                <th>Condition</th>
                                 <th>Farm Name</th>
                                 <th>Approval Status</th>
                                 <th>Actions</th>
@@ -51,13 +54,12 @@
                 </div>
             </div>
         </div>
-
-        <?php include "../../../templates/delete.php"?>
     </div>
 
-    <script src="../../../assets/js/notifications.js"></script>
-    <script src="../../../assets/js/functions/admin/inventory.js"></script>
-    <script src="../../../assets/js/reload-functions.js"></script>
-    <script src="../../../assets/js/search.js"></script>
+    
+    <script src="../../../assets/js/functions/admin/equipment.js"></script>
+    <script src="../../../assets/js/functions/admin/reload-functions.js"></script>
+    <script src="../../../assets/js/functions/admin/search.js"></script>
+    <script src="../../../assets/js/functions/admin/statusApproval.js"></script>
 </body>
 </html>

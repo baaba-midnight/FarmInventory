@@ -27,16 +27,63 @@ function searchInventory() {
 
                 row.innerHTML = `
                     <tr>
-                        <td>${item.item_name}</td>
+                        <td>${item.name}</td>
                         <td>${item.category}</td>
                         <td>${item.quantity}</td>
                         <td>${item.farm_name}</td>
                         <td>${item.approval_status}</td>
                         <td>
                             <!-- Example actions -->
-                            <button class="btn btn-view" onclick="editInventoryItem(${item.id})">Edit</button>
-                            <button class="btn btn-remove" onclick="deleteInventoryItem(${item.id})">Delete</button>
-                            <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
+                            <button class="btn btn-view" onclick="approve(${item['id']}, 'inventory')">Approve</button>
+                            <button class="btn btn-remove" onclick="reject(${item['id']}, 'inventory')">Reject</button>
+                            
+                        </td>
+                    </tr>`;
+                
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching search results:', error));
+}
+
+function searchEquipment() {
+    const query = document.getElementById("search-input").value;
+
+    const tableBody = document.querySelector("#equipmentTable tbody");
+    tableBody.innerHTML = ''; // Clear previous data
+
+    if (query.trim() === '') {
+        // If search is cleared, reload original inventory items
+        fetchEquipment();
+        return;
+    }
+
+    // Fetch filtered inventory data
+    fetch(`../../../functions/search.php?context=equipment&query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5">No results found.</td></tr>';
+                return;
+            }
+
+            // Dynamically insert rows based on search results
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-id', item.id);
+
+                row.innerHTML = `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.category}</td>
+                        <td>${item.condition}</td>
+                        <td>${item.farm_name}</td>
+                        <td>${item.approval_status}</td>
+                        <td>
+                            <!-- Example actions -->
+                            <button class="btn btn-view" onclick="approve(${item['id']}, 'equipment')">Approve</button>
+                            <button class="btn btn-remove" onclick="reject(${item['id']}, 'equipment')">Reject</button>
+                            
                         </td>
                     </tr>`;
                 
@@ -127,7 +174,7 @@ function searchUsers() {
                     <td>
                         <a href="#" class="btn btn-sm btn-view" onclick="editUser(${item.id})">Edit</a>
                         <a href="#" class="btn btn-sm btn-remove" onclick="deleteUser(${item.id})">Delete</a>
-                        <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
+                        
                     </td>`;
                 
                 tableBody.appendChild(row);

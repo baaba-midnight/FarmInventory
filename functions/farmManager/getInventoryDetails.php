@@ -6,19 +6,7 @@ $response = ['success' => false, 'data' => []];
 if (isset($_GET['id'])) {
     $itemID =  (int) $_GET['id'];
 
-    $query = "SELECT 
-        equipment.equipment_name,
-        equipment.category,
-        inventory.quantity,
-        farms.id AS farm_id
-    FROM 
-        inventory
-    INNER JOIN 
-        equipment ON inventory.equipment_id = equipment.id
-    INNER JOIN 
-        farms ON equipment.farm_id = farms.id
-    WHERE 
-        equipment.id = ?;";
+    $query = "SELECT `name`, `category`, `quantity`, `farm_id` FROM `inventory` WHERE `id` = ?";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $itemID);

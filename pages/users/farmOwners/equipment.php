@@ -1,4 +1,5 @@
 <?php include "./farmManagersSession.php" ?>
+<?php include '../../../templates/messageBox.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script src="../../../assets/js/delete.js"></script>
+    <script src="../../../assets/js/functions/farmManager/fetchEquipment.js"></script>
+    <script>getEquipment(<?php echo $userId ?>)</script>
     
     <link rel="stylesheet" href="../../../assets/css/style.css">
     <link rel="stylesheet" href="../../../assets/css/sidebar.css">
@@ -20,6 +23,7 @@
     <link rel="stylesheet" href="../../../assets/css/tables.css">
 </head>
 <body>
+    <?php display_message_box(); ?>
     <div class="d-flex">
         <?php 
         include "../../../templates/userSidebar.php";
@@ -29,7 +33,7 @@
         <div class="main-content flex-grow-1">
             <?php 
             $headerTitle = "Equipment Management";
-            $buttonContent = "Add New Item";
+            $buttonContent = "Add New Equipment";
             include "../../../templates/header.php";
             ?>
 
@@ -42,6 +46,7 @@
                                 <th>Category</th>
                                 <th>Condition</th>
                                 <th>Farm Name</th>
+                                <th>Approval Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -71,18 +76,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="add_category" class="form-label">Category</label>
-                                <select class="form-select" id="add_category" name="category" required>
-                                    <option value="" selected disabled>Select Item Category</option>
-                                    <option value="Supplies">Supplies</option>
-                                    <option value="Tools">Tools</option>
-                                    <option value="Machinery">Machinery</option>
-                                </select>
+                                <input class="form-control" id="add_category" name="category" placeholder="Enter category" required>
+                                    
                                 <span id="categoryError" class="error-message"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity" placeholder="Enter item Quantity" name="quantity" required>
-                                <span id="quantityError" class="error-message"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="farm_name" class="form-label">Farm Name</label>
@@ -96,7 +92,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="cancelItemButton" class="btn btn-cancel btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" form="addItemForm" class="btn btn-custom">Save</button>
+                        <button type="submit" form="addItemForm" class="btn btn-custom" data-bs-dismiss="modal">Save</button>
                     </div>
                 </div>
             </div>
@@ -121,17 +117,14 @@
                             <div class="mb-3">
                                 <label for="edit_category" class="form-label">Category</label>
                                 <select class="form-select" id="edit_category" name="category" required>
-                                    <option value="" selected disabled>Select Item Category</option>
-                                    <option value="Supplies">Supplies</option>
-                                    <option value="Tools">Tools</option>
-                                    <option value="Machinery">Machinery</option>
+                                    <!-- Will be dynamically inserted by AJAX -->
                                 </select>
                                 <span id="categoryError" class="error-message"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="edit-status" class="form-label">Status</label>
+                                <label for="edit-status" class="form-label">Condition</label>
                                 <select class="form-select" id="edit-status" name="edit-status" required>
-                                    <option value="" selected disabled>Select Equipment Status</option>
+                                    <option value="" selected disabled>Select Equipment Condition</option>
                                     <option value="Functional">Functional</option>
                                     <option value="Needs Repair">Needs Repair</option>
                                     <option value="Broken">Broken</option>
@@ -160,8 +153,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../../assets/js/notifications.js"></script>
-    <script src="../../../assets/js/functions/farmManager/fetchEquipment.js"></script>
+    
     <script src="../../../assets/js/functions/farmManager/reload-functions.js"></script>
     <script src="../../../assets/js/functions/farmManager/userSearch.js"></script>
     <script src="../../../assets/js/functions/farmManager/addNewItem.js"></script>
@@ -191,6 +183,35 @@
                     data.data.forEach(function(farmName) {
                         var option = $('<option></option>').val(farmName.id).text(farmName.farm_name);
                         $editDropdown.append(option);
+                    });
+
+                    // console.log($dropdown)
+                } else {
+                    console.log(data);
+                    alert('No farms found');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(data);
+                console.error('AJAX Error:', status, error);
+                alert('Error fetching farms');
+            }
+        });
+
+        $.ajax({
+            url: '../../../functions/farmManager/getEquipmentCategories.php', // PHP file to fetch farms
+            method: 'GET',
+            data: { id: userId }, // Pass the id parameter
+            dataType: 'json',
+            success: function(data) {
+                // Check if the response is an array and has farms
+                if (Array.isArray(data.data) && data.data.length > 0) {
+                    var $dropdown = $('#edit_category');
+                    console.log(data.data)
+
+                    data.data.forEach(function(category) {
+                        var option = $('<option></option>').val(category).text(category);
+                        $dropdown.append(option);
                     });
 
                     // console.log($dropdown)

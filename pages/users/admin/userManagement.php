@@ -1,4 +1,5 @@
-<?php include "../../../templates/messageBox.php"?>
+<?php include "./adminSession.php" ?>
+<?php include "../../../templates/messageBox.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">

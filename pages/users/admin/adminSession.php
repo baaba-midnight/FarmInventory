@@ -10,8 +10,9 @@ if (!isset($_SESSION['role'])) {
     header('Location: ../../auth/login.php');
     exit();
 } else {
-    // Check if role is not farm manager, then redirect to login
-    if ($_SESSION['role'] !== 'farm_manager') {
+    // Check if role is not admin, then redirect to login
+    if ($_SESSION['role'] !== 'admin') {
+        session_destroy();
         header('Location: ../../auth/login.php');
         exit();
     }

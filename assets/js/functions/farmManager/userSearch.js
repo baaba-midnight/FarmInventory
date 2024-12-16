@@ -28,15 +28,16 @@ function searchEquipment(userID) {
 
                 row.innerHTML = `
                     <tr>
-                        <td>${item.equipment_name}</td>
+                        <td>${item.name}</td>
                         <td>${item.category}</td>
-                        <td>${item.status}</td>
+                        <td>${item.condition}</td>
                         <td>${item.farm_name}</td>
+                        <td>${item.approval_status}</td>
                         <td>
                             <!-- Example actions -->
                             <button class="btn btn-view" onclick="editEquipment(${item.id})">Edit</button>
                             <button class="btn btn-remove" onclick="deleteEquipment(${item.equipment_id})">Delete</button>
-                            <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
+                            
                         </td>
                     </tr>`;
                 
@@ -75,15 +76,16 @@ function searchInventory(userID) {
 
                 row.innerHTML = `
                     <tr>
-                        <td>${item.equipment_name}</td>
+                        <td>${item.name}</td>
                         <td>${item.category}</td>
                         <td>${item.status}</td>
                         <td>${item.farm_name}</td>
+                        <td>${item.approval_status}</td>
                         <td>
                             <!-- Example actions -->
-                            <button class="btn btn-view" onclick="editEquipmentItem(${item.equipment_id})">Edit</button>
+                            <button class="btn btn-view" onclick="editInventory(${item.id})">Edit</button>
                             <button class="btn btn-remove" onclick="deleteInventory(${item.id})">Delete</button>
-                            <a href="#" class="btn btn-sm" style="color: #0A9A05">Generate Report</a>
+                            
                         </td>
                     </tr>`;
                 
@@ -120,10 +122,7 @@ function searchFarms(userID) {
                     <div class="row justify-content-center">
                         <div class="col-md-10 mb-4">
                             <div class="card p-4">
-                                <div class="farm-header">
-                                    <h3 class="info farm-title">${farm['farm_name']}</h3>
-                                    <a class="btn generate-report">Generate Report</a>
-                                </div>
+                                <h3 class="info farm-title">${farm['farm_name']}</h3>
                                 <h6 class="info"><b>Location: </b>${farm.location}</h6>
                                 <h6 class="info"><b>Primary Crop:</b> ${farm.primary_crop}</h6>
                                 <h6 class="info"><b>Size:</b> ${farm.size_acres} acres</h6>
